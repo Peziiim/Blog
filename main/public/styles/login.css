@@ -1,0 +1,55 @@
+.login-card {
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(51, 54, 62);
+    width: 35vw;
+    height: 68vh;
+    border: 2px solid rgb(22, 111, 254);
+    border-radius: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    width: 35vw;
+    height: 68vh;
+}
+
+.form-container h1 {
+    position: relative;
+    top: 50px;
+    margin-top: 20px;
+}
+
+form input {
+    width: 23vw;
+    height: 10%;
+    border-radius: 10px;
+    background-color: rgb(22, 111, 254);
+    font-weight: 700;
+}
+
+#email, #password {
+    border: 2px solid white;
+    background-color: white;
+    border-radius: 5px;
+}
+
+form a {
+    font-size: 1rem;
+    text-align: start;
+    font-weight: 900;
+    color: white;
+}
