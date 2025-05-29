@@ -2,14 +2,14 @@
 
 <div class="login-card">
     <div class="form-container">
-        <h1>Cadastre-se</h1>
+        <h1>Login</h1>
         <form action="/submit" method="POST">
             <input type="email" name="email" id="email" placeholder="email">
             <h5 id="emailH5"><%= typeof emailError !== 'undefined' ? emailError : '' %></h5>
             <input type="password" name="password" id="password" placeholder="senha">
             <h5 id="passH5"><%= typeof passError !== 'undefined' ? passError : '' %></h5>
-            <input type="submit" id="inBtn" value="Cadastrar-se">
-            <a href="/login">Já tem o cadastro? Faça login</a>
+            <input type="submit" id="inBtn" value="Entrar">
+            <a href="/">Não tem o cadastro ainda? Faça aqui</a>
         </form>
     </div>
 </div>
