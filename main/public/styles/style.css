@@ -30,6 +30,7 @@ nav h1 {
    margin-left: 3vw;
    font-size: 2.5rem;
 }
+
 .left-nav {
     display: flex;
     align-items: center;
@@ -47,23 +48,6 @@ nav h1 {
     color: white;
     font-size: 1.5rem;
 }
-
-nav input {
-    height: 40px;
-    border-radius: 15px;
-    background-color: rgb(197, 195, 195);
-    font-weight: 700;
-    width: 190px;
-    font-family: "WDXL Lubrifont TC", sans-serif;
-    border: 2px solid grey;
-    padding: 2px;
-}
-
-nav input::placeholder {
-    font-size: 16px;
-    color: black;
-}
-
 
 footer {
     width: 100vw;
