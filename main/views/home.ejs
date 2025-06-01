@@ -14,8 +14,9 @@
 </head>
 
 <body>
+    <span class="backdrop"></span>
     <nav>
-        <h1>Blogg's</h1>
+        <h1>CAP'S</h1>
         <div class="left-nav">
             <div id="add-container"><button id="add">+</button></div>
             <ul>
@@ -41,22 +42,33 @@
         </div>
     </div>
 
+    <form id="addPostForm" method="post" action="/add-post">
+        <textarea id="content" name="content" placeholder="Digite seu post" required></textarea>
+        <button type="submit" id="addPost">Enviar</button>
+    </form>
 
-    <section class="posts">
-        <article class="post">
-            <div id="head">
-                <div id="user">
-                    <img src="/images/user.png" alt="">
-                    <h4 id="username">Peziim</h4>
+    <section class="posts" id="posts-container">
+        <% posts.forEach(function(post) { %>
+            <article class="post">
+                <div id="head">
+                    <div id="user">
+                        <img src="/images/user.png" alt="">
+                        <h4 id="username">
+                            <%= post.username %>
+                        </h4>
+                    </div>
+                    <div id="buttons">
+                        <button id="edit"><img src="/images/lapis.png" alt=""></button>
+                        <button id="delete<%= post.postID %>"><img src="/images/lixeira.png" alt=""></button>
+                    </div>
                 </div>
-                <div id="buttons">
-                    <button id="edit"><img src="/images/lapis.png" alt=""></button>
-                    <button id="delete"><img src="/images/lixeira.png" alt=""></button>
-                </div>
-            </div>
-            <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-        </article>
+                <p>
+                    <%= post.content %>
+                </p>
+            </article>
+            <% }) %>
     </section>
+    <script src="/scripts/home.js"></script>
 </body>
 
 </html>

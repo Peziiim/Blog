@@ -3,7 +3,9 @@
 <div class="login-card">
     <div class="form-container">
         <h1>Cadastre-se</h1>
-        <form action="/submit" method="POST">
+        <form action="/register" method="POST">
+            <input type="text" name="username" id="username" placeholder="username">
+            <h5 id="userH5"><%= typeof userError !== 'undefined' ? userError : '' %></h5>
             <input type="email" name="email" id="email" placeholder="email">
             <h5 id="emailH5"><%= typeof emailError !== 'undefined' ? emailError : '' %></h5>
             <input type="password" name="password" id="password" placeholder="senha">
