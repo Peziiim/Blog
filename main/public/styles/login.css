@@ -12,7 +12,7 @@
     align-items: center;
     background-color: rgb(51, 54, 62);
     width: 35vw;
-    height: 68vh;
+    height: auto;
     border: 2px solid grey;
     border-radius: 10px;
 }
@@ -29,7 +29,7 @@ form {
 
 .form-container h1 {
     position: relative;
-    top: 50px;
+    top: 30px;
     margin-top: 20px;
 }
 
@@ -39,12 +39,15 @@ form input {
     border-radius: 10px;
     background-color: rgb(22, 111, 254);
     font-weight: 700;
+    font-size: 1.2rem;
 }
 
-#email, #password {
+
+#email, #password , #username{
     border: 2px solid white;
     background-color: white;
     border-radius: 5px;
+    font-size: 12px;
 }
 
 form a {
@@ -54,9 +57,9 @@ form a {
     color: white;
 }
 
-#emailH5, #passH5 {
+#emailH5, #passH5, #userH5 {
     color: red;
-    font-size: 8px;
+    font-size: 10px;
     z-index: 1;
     align-self: start;
     margin-left: 6vw;
