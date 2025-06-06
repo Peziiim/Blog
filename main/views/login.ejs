@@ -1,18 +1,39 @@
 <%- include("partials/header.ejs") %>
 
+
 <div class="login-card">
-    <div class="form-container">
-        <h1>Login</h1>
-        <form action="/login" method="POST">
-            <input type="text" name="login" id="email" placeholder="email ou username">
-            <h5 id="emailH5"><%= typeof emailError !== 'undefined' ? emailError : '' %></h5>
-            <input type="password" name="password" id="password" placeholder="senha">
-            <h5 id="passH5"><%= typeof passError !== 'undefined' ? passError : '' %></h5>
-            <input type="submit" id="inBtn" value="Entrar">
-            <a href="/">Não tem o cadastro ainda? Faça aqui</a>
-        </form>
+     <div class="home-title">
+        <article>
+            <h5>Seu espaço diário para aprender, refletir e crescer</h5>
+            <h1>Ideias que inspiram<br><span style="color: #00ADB5;">palavras que conectam</span></h1>
+        </article>
     </div>
+  <div class="form-container">
+      <form action="/login" method="POST">
+        <h1>Entre</h1>
+        <input id="username" type="text" name="login" id="login" placeholder="email ou username" />
+      <div class="error">
+          <h5 id="emailH5">
+            <%= typeof emailError !== 'undefined' ? emailError : '' %>
+          </h5>
+      </div>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="senha"
+      />
+      <div class="error">
+          <h5 id="passH5">
+            <%= typeof passError !== 'undefined' ? passError : '' %>
+          </h5>
+      </div>
+      <input type="submit" id="inBtn" value="Cadastrar-se" />
+      <a href="/">Ainda não tem o cadastro? Cadastre-se aqui</a>
+    </form>
+  </div>
 </div>
 
+</body>
 
-<%- include("partials/footer.ejs") %>
+</html>

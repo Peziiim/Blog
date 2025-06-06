@@ -1,6 +1,7 @@
 .login-card {
     width: 100vw;
     height: 90vh;
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,11 +11,49 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(51, 54, 62);
-    width: 35vw;
-    height: auto;
-    border: 2px solid grey;
-    border-radius: 10px;
+    justify-content: center;
+    background-color: #EEEEEE;
+    width: 50vw;
+    height: 90vh;
+}
+
+.home-title {
+    width: 60vw;
+    height: 90vh;
+    background-color: rgb(30, 32, 37);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.home-title article{
+    font-size: 2.3rem;
+    width: 80%;
+    text-align: start;
+}
+
+.home-title article span {
+    border-right: 2px solid #00ADB5;
+    animation: tilt 1s steps(1) infinite;
+    padding-right: 2px;
+}
+
+@keyframes tilt {
+    0%, 49% {
+        border-right-color: #00ADB5;
+    }
+    50%, 100% {
+     border-right-color: transparent;
+    }
+}
+
+
+.home-title h5 {
+    position: relative;
+    bottom: 15%;
+    font-size: 1.4rem;
 }
 
 form {
@@ -23,23 +62,29 @@ form {
     justify-content: center;
     align-items: center;
     gap: 20px;
-    width: 35vw;
-    height: 68vh;
+    width: 40vw;
+    height: 90vh;
+    color: black;
 }
 
-.form-container h1 {
-    position: relative;
-    top: 30px;
-    margin-top: 20px;
+form h1 {
+    margin-bottom: 20px;
 }
 
 form input {
-    width: 23vw;
+    width: 22vw;
     height: 10%;
     border-radius: 10px;
     background-color: rgb(22, 111, 254);
     font-weight: 700;
     font-size: 1.2rem;
+    padding: 0 .5vw 0 .5vw;
+}
+
+form input::placeholder {
+    position: absolute;
+    left: 5px;
+    bottom: 35%;
 }
 
 
@@ -48,13 +93,20 @@ form input {
     background-color: white;
     border-radius: 5px;
     font-size: 12px;
+    border: 2px solid #393E46;
 }
 
 form a {
     font-size: 1rem;
     text-align: start;
     font-weight: 900;
-    color: white;
+    color: black;
+    text-decoration: none;
+}
+
+.error {
+    width: 23vw;
+    text-align: start;
 }
 
 #emailH5, #passH5, #userH5 {
@@ -62,5 +114,4 @@ form a {
     font-size: 10px;
     z-index: 1;
     align-self: start;
-    margin-left: 6vw;
 }
