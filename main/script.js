@@ -4,10 +4,10 @@ import session from "express-session";
 
 const app = express();
 const port = 3000;
-const anoAtual = new Date().getFullYear()
-let posts = []
-let postID = 0
-let count
+const anoAtual = new Date().getFullYear();
+let posts = [];
+let postID = 0;
+let count;
 
 app.set('view engine', 'ejs')
 app.set('views', 'views')
@@ -21,14 +21,14 @@ app.use( session({
 }))
 
 
-app.get("/", (req, res) => {
-  res.render('index', { anoAtual })
-  count = 0
+app.get("/", (req, res) => { 
+  res.render('index', { anoAtual });
+  count = 0;
   
 });
 
 
-app.post("/register", (req, res) => {
+app.post("/submit", (req, res) => {
   const email = req.body.email
   const password = req.body.password
   const username = req.body.username
@@ -37,28 +37,20 @@ app.post("/register", (req, res) => {
   let passError = "";
   let userError = "";
   
-  if (!email.includes("gmail")) {
-    emailError = "Email inválido";
-  }
-  
   if (password.length < 7) {
     passError = "Tamanho mínimo de 7 caracteres";
   }
   
-  if (username.includes(" ")) {
-    userError = "Apenas (- ou _ ) para separar caracteres";
-  }
-  
-  if (req.session.email == email && count == 0) {
+  if (req.session.email == email && count != 0) {
     emailError = "Email já utilizado";
   }
   
-  if (req.session.username == username && count == 0) {
+  if (req.session.username == username && count != 0) {
     userError = "Usuário existente";
   }
   
   
-  if (emailError || passError || userError && count == 0) {
+  if (emailError || passError || userError) {
     res.render('index', { anoAtual, emailError, passError, userError });
   } else {
     req.session.username = username
@@ -67,7 +59,7 @@ app.post("/register", (req, res) => {
     emailError = "";
     passError = "";
     userError = "";
-    count = 1
+    count++;
     res.render('home', {posts, username, email});
   }
 })
@@ -97,7 +89,7 @@ if (email !== login && username != login) {
     emailError = "Senha incorreta";
     res.render('login', { anoAtual, emailError });
 
-  } else {
+  } else { 
      res.render('home', {posts, username, email})
   }
 
@@ -106,11 +98,23 @@ if (email !== login && username != login) {
 app.post("/add-post", (req, res) => {
   const content = req.body.content
   const username = req.session.username
+  const day = new Date().getDate();
+  
+  let month = new Date().getMonth();
+  let meses = ["Janeiro", "Fevereiro", 
+              "Março", "Abril", "Maio", "Junho", 
+              "Julho", "Agosto", "Setembro", "Outubro", 
+              "Novembro", "Dezembro"];
+  
+  month = meses[month]
   postID++
+
   const newPost = {
     username: username,
     content: content,
-    postID: postID
+    postID: postID,
+    day: day,
+    month: month
   };
   
   posts.push(newPost);
@@ -120,11 +124,27 @@ app.post("/add-post", (req, res) => {
 
 app.delete("/delete-post/:id", (req, res) => {
   const id = req.params.id;
-  posts = posts.filter(post => post.postID !== id);
-  res.json({ success: true });
-  console.log(posts)
+
+  posts.forEach(post => {
+    if(post.postID == id) {
+      posts.pop(post);
+    }
+  })
 });
 
+
+app.patch("/edit-post/:id", (req, res) => {
+  const id = Number(req.params.id)
+  const content = req.body.content
+
+    const post = posts.find(post => post.postID === id);
+  if (post) {
+    post.content = content;
+    res.json(post);
+  } else {
+    res.status(404).json({ error: "Post não encontrado" });
+  }
+})
 
 
 app.listen(port, () => {
